@@ -28,9 +28,10 @@ class LoginController extends Controller
         $username = $_POST['username'];
         $password = $_POST['password'];
         $captcha = $_POST['captcha'];
-        //都已小写判断
+//        var_dump($_SESSION);die;
         if(strtolower($captcha) != strtolower($_SESSION['random_code'])){
-            $this->redirect("index.php?p=Admin&c=Login&a=login","验证码填写错误！",3);
+            //错误跳转到登陆页面
+            $this->redirect('index.php?p=Admin&c=Login&a=login','验证码错误',2);
         }
         //调用模型验证账号密码
         $membersModel = new MembersModel();
@@ -47,15 +48,28 @@ class LoginController extends Controller
          * 自动登录
          */
 //        var_dump($result['remember']);die;
-        if($result['remember']??0){
-            $id = $result['id'];
+        if (isset($_POST['remember'])) {
+            $id = $result['member_id'];
             //将密码加密
             $password = md5($result['password'] . "_s");
-            setcookie('id', $id, time() + 60 * 3600 * 12, "/");
-            setcookie('password', $password, time() + 60 * 3600 * 12, "/");
+            setcookie('plan_id', $id, time() + 24 * 3600 * 7, "/");
+            setcookie('password', $password, time() + 24 * 3600 * 7, "/");
         }
+//        die;
 //        echo 111;die;
         //登陆成功显示首页
         $this->redirect('index.php?p=Admin&c=Index&a=index');
     }
+        /**
+         * 退出功能
+         */
+        public function logout(){
+            //删除cookie中的id和password
+        setcookie('id',null,-1,"/");
+        setcookie('password',null,-1,"/");
+        @session_start();
+        unset($_SESSION['ADMIN_INFO']);
+        $this->redirect('index.php?p=Admin&c=login&a=login');
+    }
+
 }

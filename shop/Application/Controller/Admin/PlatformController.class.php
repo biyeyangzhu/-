@@ -27,10 +27,10 @@ class PlatformController extends Controller
             @session_start();
             if(!isset($_SESSION['ADMIN_INFO'])){
                 //判断id与密码
-                if(isset($_COOKIE['id']) && isset($_COOKIE['password'])){
-                        $id=$_COOKIE['id'];
+                if(isset($_COOKIE['member_id']) && isset($_COOKIE['password'])){
+                        $id=$_COOKIE['member_id'];
                         $password=$_COOKIE['password'];
-                    $membersModel = new MemberModel();
+                    $membersModel = new MembersModel();
                     $result = $membersModel->checkCookie($id,$password);
                     //验证成功返回true
                     if($result != false){
