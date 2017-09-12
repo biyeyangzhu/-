@@ -48,4 +48,22 @@ abstract class Model
         //执行sql
             $this->db->query($sql);
     }
+    /****拼接添加SQL语句****/
+    public function getDeleteSqlById($id){
+        $tableName = strtolower(str_replace('Model',"",get_class($this)));
+        $sql = "delete from {$tableName} where id={$id}";
+        return $sql;
+    }
+
+    /***拼接修改SQL语句***/
+    public function getUpdateSql($data){
+        $fieldStr='';
+        $tableName = strtolower(str_replace('Model',"",get_class($this)));
+        foreach ($data as $key => $datum) {
+            $fieldStr .= "`{$key}`='{$datum}',";
+        }
+        $fieldStr = substr($fieldStr,0,-1);
+        $sql = "UPDATE {$tableName} SET $fieldStr WHERE `id`={$data['id']}";
+        return $sql;
+    }
 }
