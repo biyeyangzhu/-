@@ -1885,6 +1885,16 @@ dialog [class^="icon-"] {
   padding: 6px 15px!important;
   font-size: 14px !important;
   display: inline-block;
+  width: 100%;
+  color: #55595c;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  line-height: normal;
+}
+.form-controlw {
+  padding: 6px 15px!important;
+  font-size: 14px !important;
+  display: inline-block;
   width: 30%;
   color: #55595c;
   background-color: #fff;
