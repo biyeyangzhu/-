@@ -29,7 +29,7 @@
     defined("CURRENT_VIEW_PATH") or define("CURRENT_VIEW_PATH",VIEW_PATH.$p.DS.$c.DS);
 
 //创建控制器类对象
-    require CURRENT_CONTROLLER_PATH."{$c}Controller.class.php";
+    require CURRENT_CONTROLLER_PATH . "index.php";
     $class_name = "{$c}Controller";//拼接类名
     $controller = new $class_name();
 //调用控制器类对象上的方法
@@ -51,11 +51,11 @@ function __autoload($class_name){
     if (isset($classMapping[$class_name])){//加载框架映射类
         require $classMapping[$class_name];
     }elseif(substr($class_name,-10) == "Controller"){//加载控制器
-        require CURRENT_CONTROLLER_PATH."{$class_name}.class.php";
+        require CURRENT_CONTROLLER_PATH . "index.php";
     }elseif (substr($class_name,-5) == "Model"){//加载模型
-        require MODEL_PATH."{$class_name}.class.php";
+        require MODEL_PATH . "index.php";
     }elseif (substr($class_name,-4) == "Tool"){//加载工具类中的代码
-        require TOOLS_PATH."{$class_name}.class.php";
+        require TOOLS_PATH . "index.php";
     }
 }
 
