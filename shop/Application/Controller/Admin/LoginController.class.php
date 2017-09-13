@@ -28,7 +28,7 @@ class LoginController extends Controller
         $username = $_POST['username'];
         $password = $_POST['password'];
         $captcha = $_POST['captcha'];
-//        var_dump($_SESSION);die;
+        //以小写判断验证码
         if(strtolower($captcha) != strtolower($_SESSION['random_code'])){
             //错误跳转到登陆页面
             $this->redirect('index.php?p=Admin&c=Login&a=login','验证码错误',2);

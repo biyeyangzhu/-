@@ -48,4 +48,11 @@ abstract class Model
         $sql = "UPDATE {$tableName} SET $fieldStr WHERE `id`={$data['id']}";
         return $sql;
     }
+    /****拼接添加SQL语句****/
+    public function getDeleteSqlId($id){
+        $tableName = strtolower(str_replace('Model',"",get_class($this)));
+        $sql = "delete from {$tableName} where id={$id}";
+        return $sql;
+    }
+
 }

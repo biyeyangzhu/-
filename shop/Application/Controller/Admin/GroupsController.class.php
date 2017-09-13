@@ -14,7 +14,7 @@ class GroupsController extends PlatformController
     public function index()
     {
         //调用模型
-        $groupsModel = new GroupsModel();
+        $groupsModel = new groupsModel();
         $result = $groupsModel->getAll();
         //分配页面
         $this->assign('result', $result);
@@ -28,7 +28,7 @@ class GroupsController extends PlatformController
       //根据ID删除数据
         $id = $_GET['id'];
 //        var_dump($id);die;
-        $groupsModel = new GroupsModel();
+        $groupsModel = new groupsModel();
         $result =$groupsModel->delete($id);
 //        var_dump($result);die;
         //删除成功 跳转
@@ -42,7 +42,7 @@ class GroupsController extends PlatformController
     {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $data = $_POST;
-            $groupsModel = new GroupsModel();
+            $groupsModel = new groupsModel();
             $result = $groupsModel->insert($data);
             if ($result === false) {
                 $this->redirect("index.php?p=Admin&c=Groups&a=add", "添加失败" . $groupsModel->getError(), 3);
@@ -63,7 +63,7 @@ class GroupsController extends PlatformController
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             //接收数据
             $data = $_POST;
-            $groupsModel = new GroupsModel();
+            $groupsModel = new groupsModel();
             $result = $groupsModel->update($data);
             if ($result === false) {
                 $this->redirect("index.php?p=Admin&c=Groups&a=edit", "添加失败" . $groupsModel->getError(), 3);
@@ -72,7 +72,7 @@ class GroupsController extends PlatformController
             $this->redirect("index.php?p=Admin&c=Groups&a=index");
         } else {
             $id = $_GET['id'];
-            $groupsModel = new GroupsModel();
+            $groupsModel = new groupsModel();
             $rows = $groupsModel->getOne($id);
             //分配页面显示数据
 //            var_dump($rows);die;

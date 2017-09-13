@@ -29,18 +29,7 @@ class PlansModel extends Model
     }
 
 
-    /**
-     * 查询一条数据
-     * @param $id
-     * @return array|mixed|null
-     */
-    public function getOne($id)
-    {
-        //准备sql
-        $sql = "select * from plans where id={$id}";
-        //执行sql
-        return $this->db->fetchRow($sql);
-    }
+
 
     /**
      * 增加功能
@@ -59,11 +48,23 @@ class PlansModel extends Model
         $result = $this->db->query($sql);
         return $result;
     }
+    /**
+     * 查询一条数据
+     * @param $id
+     * @return array|mixed|null
+     */
+    public function getOne($id)
+    {
+        //准备sql
+        $sql = "select * from plans where id={$id}";
+        //执行sql
+        return $this->db->fetchRow($sql);
+    }
 
     /**
-     * 修改功能
-     * @param $data 数据
-     */
+ * 修改功能
+ * @param $data 数据
+ */
     public function update($data)
     {
         //状态 合成用 |  拆分用&
