@@ -37,6 +37,13 @@ class groupsModel extends Model
      */
     public function delete($id)
     {
+        $sql = "select count(*) from member where group_id={$id}";
+        $row = $this->db->fetchColumn($sql);
+//        var_dump($row);die;
+        if($row == 0){
+            $this->error="该部门有员工不能删除";
+            return false;
+        }
         $sql = "delete from groups where id={$id}";
         $this->db->query($sql);
     }

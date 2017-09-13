@@ -30,6 +30,9 @@ class GroupsController extends PlatformController
 //        var_dump($id);die;
         $groupsModel = new groupsModel();
         $result =$groupsModel->delete($id);
+        if($result === false){
+            $this->redirect('index.php?p=Admin&c=Groups&a=index',"删除失败".$groupsModel->getError(),3);
+        }
 //        var_dump($result);die;
         //删除成功 跳转
         $this->redirect('index.php?p=Admin&c=Groups&a=index');

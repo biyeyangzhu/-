@@ -114,4 +114,13 @@ class MemberModel extends Model
             }
             return $result;
         }
+
+
+        /**
+         * 查询所有的美发师
+         */
+        public function getAll(){
+            $sql = "select * from member where group_id=2";
+            return $this->db->fetchAll($sql);
+        }
 }
