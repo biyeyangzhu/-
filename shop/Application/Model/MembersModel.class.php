@@ -9,7 +9,7 @@
 class MembersModel extends Model
 {
     public function insert($data){
-        $this->insertData($data);
+        $this->getInsertSql($data);
     }
 
     /**
@@ -97,7 +97,7 @@ class MembersModel extends Model
         //自动登录验证ID和密码
         public function checkCookie($id,$password){
                 //验证id
-            $sql = "select * from members where id={$id}";
+            $sql = "select * from Members where id={$id}";
             $result = $this->db->fetchRow($sql);
             if(empty($result)){
                 $this->error="账号不存在";

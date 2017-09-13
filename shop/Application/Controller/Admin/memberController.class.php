@@ -17,7 +17,7 @@ class MemberController extends Controller
         $condition = [];
 
         //查询所有的员工数据
-        $memberModel=new memberModel();
+        $memberModel=new MembersModel();
         $result =$memberModel->index($page,$condition);
         //查询所有的分类数据
         $groupsModel = new groupsModel();
@@ -59,11 +59,11 @@ class MemberController extends Controller
             $thumb_logo = $imageModel->thumb($logo_path,100,100);
 //                    var_dump($thumb_logo);exit;
             if($thumb_logo === false){//制作缩略图失败
-                $this->redirect("index.php?p=Admin&c=Goods&a=add","缩略图制作失败！".$imageModel->getError(),3);
+                $this->redirect("index.php?p=Admin&c=member&a=add","缩略图制作失败！".$imageModel->getError(),3);
             }
             //制作缩略图成功，添加数据到$data中
             $data['thumb_photo'] = $thumb_logo;
-            $member = new memberModel();
+            $member = new membersModel();
             $member->insert($data);
         }else{
 //            添加显示页面  显示员工分组
@@ -82,7 +82,7 @@ class MemberController extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             $id = $_GET['id'];
-            $memberModel = new  memberModel();
+            $memberModel = new  membersModel();
             $row = $memberModel->edit($id);
             $groupsModel = new groupsModel();
             $groups = $groupsModel->getAll();
@@ -93,7 +93,7 @@ class MemberController extends Controller
             if ($_FILES['logo']['error'] == '4') {
                 $id = $_POST['id'];
                 $data = $_POST;
-                $membermodel = new memberModel();
+                $membermodel = new membersModel();
                 $result = $membermodel->update($data);
                 if ($result === false) {
                     $this->redirect("index.php?p=Admin&c=member&a=edit&id={$id}", "修改失败", 3);
@@ -112,7 +112,7 @@ class MemberController extends Controller
                 }
 //        将logo保存到$data中
                 $data['logo'] = $logo_path;
-                $membermodel = new memberModel();
+                $membermodel = new MembersModel();
                 $result = $membermodel->update($data);
                 if ($result === false) {
                     $this->redirect("index.php?p=Admin&c=member&a=edit&id={$id}", "修改失败", 3);

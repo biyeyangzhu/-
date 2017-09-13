@@ -12,7 +12,7 @@ abstract class Model
         $this->db = DB::getInstance($GLOBALS['config']['db']);
     }
 
-     //获取错误信息
+    //获取错误信息
     public function getError(){
         return $this->error;
     }
@@ -30,7 +30,7 @@ abstract class Model
         return $sql;
     }
 
-    /****拼接删除SQL语句****/
+    /****拼接添加SQL语句****/
     public function getDeleteSqlById($id){
         $tableName = strtolower(str_replace('Model',"",get_class($this)));
         $sql = "delete from {$tableName} where id={$id}";
@@ -48,11 +48,4 @@ abstract class Model
         $sql = "UPDATE {$tableName} SET $fieldStr WHERE `id`={$data['id']}";
         return $sql;
     }
-    /****拼接添加SQL语句****/
-    public function getDeleteSqlId($id){
-        $tableName = strtolower(str_replace('Model',"",get_class($this)));
-        $sql = "delete from {$tableName} where id={$id}";
-        return $sql;
-    }
-
 }
