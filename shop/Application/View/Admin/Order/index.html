@@ -26,12 +26,7 @@
         <main class="main-cont content mCustomScrollbar">
             <div class="page-wrap">
                 <!--开始::内容-->
-                <section class="page-hd">
-                    <header>
-                        <h2 class="title"><a href="index.php?p=Home&c=Order&a=add">添加预约</a></h2>
-                    </header>
-                    <hr>
-                </section>
+
 
                 <table class="table table-bordered table-striped table-hover">
 
@@ -57,12 +52,23 @@
                         <td><?=$v['realname']?></td>
                         <td><?=$v['content']?></td>
                         <td><?=$v['date']?></td>
-                        <td><?=$v['status']?></td>
+                        <td >
+                            <?php
+                            if(($v['status']&4)>0){
+                                    echo "成功";
+                            }elseif(($v['status']&2)>0){
+                                echo "失败";
+                            }else{
+                                echo "未处理";
+                            }
+?>
+
+                        </td>
                         <td><?=$v['reply']?></td>
                         <td>
-                            <a href="index.php?p=Home&c=Order&a=edit&id=<?=$v['id']?>" class="mr-5">编辑</a>
-                            <a title="详情" class="mr-5">详情</a>
-                            <a href="index.php?p=Home&c=Order&a=delete&id=<?=$v['id']?>">删除</a>
+                            <div class="form-cont">
+                                <a href="index.php?p=Admin&c=Order&a=edit&id=<?=$v['id']?>" class="btn btn-primary" >回复预约和信息</a>
+                            </div>
                         </td>
                     </tr>
                     <?php endforeach;?>

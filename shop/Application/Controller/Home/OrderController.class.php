@@ -48,7 +48,7 @@ class OrderController extends  Controller
             //添加成功跳转页面
             $this->redirect("index.php?p=Home&c=Order&a=index");
         } else {
-            $memberModel=new MembersModel();
+            $memberModel=new MemberModel();
             $user =$memberModel->getAll();
             $this->assign('user',$user);
             $this->display('add');
@@ -78,7 +78,7 @@ class OrderController extends  Controller
             $row=$orderModel->getOne($id);
             $this->assign('row',$row);
             //回显分类数据
-            $memberModel=new MembersModel();
+            $memberModel=new MemberModel();
             $rows =$memberModel->getAll();
             $this->assign('rows',$rows);
             $this->display('edit');

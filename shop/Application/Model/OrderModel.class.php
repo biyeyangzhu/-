@@ -62,7 +62,7 @@ class OrderModel extends Model
     public function update($data)
     {
         //准备sql
-        $sql = "update orders set phone='{$data['phone']}',realname='{$data['realname']}',date='{$data['date']}',content='{$data['content']}')";
+        $sql = "update orders set phone='{$data['phone']}',realname='{$data['realname']}',date='{$data['date']}',content='{$data['content']}' where id={$data['id']}";
         $this->db->query($sql);
     }
 
@@ -79,8 +79,9 @@ class OrderModel extends Model
                 $status = $status | $v;
             }
         }
+//        var_dump($data);die;
         //准备sql
-        $sql = "update orders set status='{$status}',realname='{$data['realname']}')";
+        $sql = "update orders set status='{$status}',reply='{$data['reply']}' where id='{$data['id']}'";
         $this->db->query($sql);
     }
 }

@@ -21,52 +21,55 @@
 </head>
 <body>
 <?php
- require "./Application/View/Home/nav.html";
+ require "./Application/View/Admin/nav.html";
 ?>
         <main class="main-cont content mCustomScrollbar">
             <div class="page-wrap">
                 <!--开始::内容-->
-                <form action="index.php?p=Home&c=Order&a=add" method="post">
+                <form action="index.php?p=Admin&c=Codes&a=add" method="post">
                     <section class="page-hd">
                         <header>
-                            <h2 class="title">添加预约</h2>
+                            <h2 class="title">添加部门</h2>
                         </header>
                         <hr>
                     </section>
                     <div class="form-group-col-2">
-                        <div class="form-label">电话：</div>
+                        <div class="form-label">代金券号码：</div>
                         <div class="form-cont">
-                            <input type="text" class="form-controlw form-boxed" name="phone">
+                            <input type="text" class="form-controlw form-boxed" name="code">
                         </div>
                     </div>
                     <div class="form-group-col-2">
-                        <div class="form-label">预约美发师：</div>
-                        <?php foreach($user as $v):?>
+                        <div class="form-label">所属会员：</div>
                         <div class="form-cont">
-                            <select  class="form-controlw form-boxed" name="realname">
+                            <select class="form-controlw form-boxed" name="user_id">
+                                <?php foreach($result as $v):?>
                                 <option value="<?=$v['id']?>">
                                     <?=$v['username']?>
                                 </option>
+                                <?php endforeach;?>
                             </select>
                         </div>
-                        <?php endforeach;?>
                     </div>
-
                     <div class="form-group-col-2">
-                        <div class="form-label">预约日期：</div>
+                        <div class="form-label">代金券金额：</div>
                         <div class="form-cont">
-                            <input type="date" class="form-controlw form-boxed" name="date">
+                            <input type="text" class="form-controlw form-boxed" name="money">
                         </div>
                     </div>
                     <div class="form-group-col-2">
-                        <div class="form-label">备注：</div>
+                        <div class="form-label">状态：</div>
                         <div class="form-cont">
-                            <textarea class="form-controlw form-boxed" name="content">
-
-                            </textarea>
+                            <select class="form-controlw form-boxed" name="status">
+                                <option value="4">
+                                未使用
+                            </option>
+                                <option value="2">
+                                    使用
+                                </option>
+                            </select>
                         </div>
                     </div>
-
                     <div class="form-cont">
                         <input type="submit" class="btn btn-primary" value="确认添加"/>
                     </div>

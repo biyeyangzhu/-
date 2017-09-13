@@ -29,10 +29,11 @@ class OrderController extends  Controller
             $orderModel = new OrderModel();
             $result = $orderModel->update1($data);
             if ($result === false) {
-                $this->redirect("index.php?p=Home&c=Order&a=edit", "添加失败" . $orderModel->getError(), 3);
+                $this->redirect("index.php?p=Admin&c=Order&a=edit", "添加失败" . $orderModel->getError(), 3);
             }
+//            die;
             //添加成功跳转首页
-            $this->redirect("index.php?p=Home&c=Order&a=index");
+            $this->redirect("index.php?p=Admin&c=Order&a=index");
         } else {
             $id = $_GET['id'];
             //回显一条数据
@@ -40,7 +41,7 @@ class OrderController extends  Controller
             $row=$orderModel->getOne($id);
             $this->assign('row',$row);
             //回显分类数据
-            $memberModel=new MembersModel();
+            $memberModel=new MemberModel();
             $rows =$memberModel->getAll();
             $this->assign('rows',$rows);
             $this->display('edit');

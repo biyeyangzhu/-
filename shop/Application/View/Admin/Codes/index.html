@@ -21,14 +21,14 @@
 </head>
 <body>
 <?php
- require "./Application/View/Home/nav.html";
+ require "./Application/View/Admin/nav.html";
 ?>
         <main class="main-cont content mCustomScrollbar">
             <div class="page-wrap">
                 <!--开始::内容-->
                 <section class="page-hd">
                     <header>
-                        <h2 class="title"><a href="index.php?p=Home&c=Order&a=add">添加预约</a></h2>
+                        <h2 class="title"><a href="index.php?p=Admin&c=Codes&a=add">添加代金券</a></h2>
                     </header>
                     <hr>
                 </section>
@@ -39,12 +39,10 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>电话</th>
-                        <th>预约美发师</th>
-                        <th>备注</th>
-                        <th>预约日期</th>
-                        <th>预约状态</th>
-                        <th>回复信息</th>
+                        <th>代码</th>
+                        <th>所属会员</th>
+                        <th>代金券金额</th>
+                        <th>状态</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -53,26 +51,22 @@
                     <?php foreach($result as $v):?>
                     <tr class="cen">
                         <td><?=$v['id']?></td>
-                        <td><?=$v['phone']?></td>
-                        <td><?=$v['realname']?></td>
-                        <td><?=$v['content']?></td>
-                        <td><?=$v['date']?></td>
+                        <td><?=$v['code']?></td>
+                        <td><?=($v['user_id'])?></td>
+                        <td><?=$v['money']?></td>
                         <td>
                             <?php
                             if(($v['status']&4)>0){
-                            echo "成功";
+                            echo "未使用";
                             }elseif(($v['status']&2)>0){
-                            echo "失败";
-                            }else{
-                            echo "未处理";
+                            echo "已使用";
                             }
-                            ?>
+?>
                         </td>
-                        <td><?=$v['reply']?></td>
                         <td>
-                            <a href="index.php?p=Home&c=Order&a=edit&id=<?=$v['id']?>" class="mr-5">编辑</a>
+                            <a href="index.php?p=Admin&c=Codes&a=edit&id=<?=$v['id']?>" class="mr-5">编辑</a>
                             <a title="详情" class="mr-5">详情</a>
-                            <a href="index.php?p=Home&c=Order&a=delete&id=<?=$v['id']?>">删除</a>
+                            <a href="index.php?p=Admin&c=Codes&a=delete&id=<?=$v['id']?>">删除</a>
                         </td>
                     </tr>
                     <?php endforeach;?>
