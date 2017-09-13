@@ -26,7 +26,7 @@
 				<!--开始::内容-->
 				<section class="page-hd">
 					<header>
-						<h2 class="title"><a href="index.php?p=Admin&c=Plans&a=add">添加套餐</a></h2>
+						<h2 class="title"><a href="index.php?p=Admin&c=member&a=insert">添加员工</a></h2>
 					</header>
 					<hr>
 				</section>
@@ -87,6 +87,14 @@
 				<?php endforeach;?>
 					</tbody>
 				</table>
+				<div class="panel panel-default">
+					<div class="panel-bd">
+						<div class="pagination"></div>
+					</div>
+				</div>
+				<!--开始::结束-->
+			</div>
+
 				<!--开始::结束-->
 			</div>
 		</main>
@@ -107,6 +115,14 @@
 		</footer>
 	</div>
 </div>
-
+<script>
+    $(".pagination").createPage({
+        pageCount:5,
+        current:1,
+        backFn:function(p){
+            console.log(index.php);
+        }
+    });
+</script>
 </body>
 </html>

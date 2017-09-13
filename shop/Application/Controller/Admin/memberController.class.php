@@ -22,8 +22,10 @@ class MemberController extends Controller
         //查询所有的分类数据
         $groupsModel = new groupsModel();
         $groups = $groupsModel->getAll();
-        $group=$groupsModel->getgroupname();
-        $result['0']['group_id']=$group[$result['0']['group_id']];
+        $groupname=$groupsModel->getgroupname();
+        foreach ($result['list'] as &$value){
+            $value['group_id']=$groupname[$value['group_id']];
+        }
         //分配商品数据到页面
         $this->assign($result);
         //分配 商品分类到页面
@@ -93,7 +95,6 @@ class MemberController extends Controller
                 $data = $_POST;
                 $membermodel = new memberModel();
                 $result = $membermodel->update($data);
-                var_dump($result);
                 if ($result === false) {
                     $this->redirect("index.php?p=Admin&c=member&a=edit&id={$id}", "修改失败", 3);
                 }
