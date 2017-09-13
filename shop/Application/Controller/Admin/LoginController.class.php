@@ -34,7 +34,7 @@ class LoginController extends Controller
             $this->redirect('index.php?p=Admin&c=Login&a=login','验证码错误',2);
         }
         //调用模型验证账号密码
-        $membersModel = new MembersModel();
+        $membersModel = new MemberModel();
         $result = $membersModel->check($username, $password);
 //        var_dump($result);die;
         //判断账号密码
@@ -49,7 +49,7 @@ class LoginController extends Controller
          */
 //        var_dump($result['remember']);die;
         if (isset($_POST['remember'])) {
-            $id = $result['member_id'];
+            $id = $result['id'];
             //将密码加密
             $password = md5($result['password'] . "_s");
             setcookie('plan_id', $id, time() + 24 * 3600 * 7, "/");
