@@ -6,10 +6,11 @@
  * Date: 2017/9/12
  * Time: 11:15
  */
-class MembersModel extends Model
+class MemberModel extends Model
 {
     public function insert($data){
-        $this->getInsertSql($data);
+       $sql= $this->getInsertSql($data);
+        $this->db->query($sql);
     }
 
     /**
@@ -29,14 +30,16 @@ class MembersModel extends Model
             $data['photo']=$row['photo'];
         }
         $sql = $this->getUpdateSql($data);
-        var_dump($sql);
+        //var_dump($this->getError());die;
+        $this->db->query($sql);
     }
 
     /**
      * 删除功能
      */
     public function delete($id){
-        $this->getDeleteSqlById($id);
+       $sql= $this->getDeleteSqlById($id);
+        $this->db->query($sql);
     }
 
     /**
@@ -82,7 +85,7 @@ class MembersModel extends Model
             //双重加密
             $password = md5($password);
             //准备sql
-            $sql="select * from members where username='{$username}' and password='{$password}'";
+            $sql="select * from member where username='{$username}' and password='{$password}'";
             $result = $this->db->fetchRow($sql);
 //            var_dump($result);die;
             //判断输入的账号密码与数据库的账号密码
@@ -97,7 +100,7 @@ class MembersModel extends Model
         //自动登录验证ID和密码
         public function checkCookie($id,$password){
                 //验证id
-            $sql = "select * from Members where id={$id}";
+            $sql = "select * from Member where id={$id}";
             $result = $this->db->fetchRow($sql);
             if(empty($result)){
                 $this->error="账号不存在";
