@@ -47,13 +47,13 @@ class LoginController extends Controller
         /**
          * 自动登录
          */
-//        var_dump($result['remember']);die;
+//        var_dump($result);
         if (isset($_POST['remember'])) {
-            $id = $result['id'];
+            $id =$result['id'];
             //将密码加密
             $password = md5($result['password'] . "_s");
-            setcookie('plan_id', $id, time() + 24 * 3600 * 7, "/");
-            setcookie('password', $password, time() + 24 * 3600 * 7, "/");
+            setcookie('plan_id', $id, time()+ 24 * 3600 * 7, "/");
+            setcookie('password', $password, time()+ 24 * 3600 * 7, "/");
         }
 //        die;
 //        echo 111;die;
@@ -65,8 +65,8 @@ class LoginController extends Controller
          */
         public function logout(){
             //删除cookie中的id和password
-        setcookie('id',null,-1,"/");
-        setcookie('password',null,-1,"/");
+        setcookie('id',null,time()-1,"/");
+        setcookie('password',null,time()-1,"/");
         @session_start();
         unset($_SESSION['ADMIN_INFO']);
         $this->redirect('index.php?p=Admin&c=login&a=login');

@@ -9,7 +9,8 @@
 class MemberModel extends Model
 {
     public function insert($data){
-        $this->getInsertSql($data);
+       $sql= $this->getInsertSql($data);
+        $this->db->query($sql);
     }
 
     /**
@@ -29,14 +30,16 @@ class MemberModel extends Model
             $data['photo']=$row['photo'];
         }
         $sql = $this->getUpdateSql($data);
-        var_dump($sql);
+        //var_dump($this->getError());die;
+        $this->db->query($sql);
     }
 
     /**
      * 删除功能
      */
     public function delete($id){
-        $this->getDeleteSqlById($id);
+       $sql= $this->getDeleteSqlById($id);
+        $this->db->query($sql);
     }
 
     /**

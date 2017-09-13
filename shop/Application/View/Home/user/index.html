@@ -31,12 +31,11 @@
 					<hr>
 				</section>
 				<form action="index.php?p=Admin&c=Goods&a=index" method="post">
-
-					<!-- 性别 -->
-					<select name="is_on_sale">
-						<option value=''>性别</option>
-						<option value="2">男</option>
-						<option value="1">女</option>
+					<!-- 推荐 -->
+					<select name="sex">
+						<option value="">性别</option>
+						<option value="4">男</option>
+						<option value="2">女</option>
 					</select>
 					<!-- 关键字 -->
 					关键字 <input type="text" name="keyword" size="15" />
@@ -53,10 +52,6 @@
 								<th>姓名</th>
 								<th>性别</th>
 								<th>电话</th>
-								<th>部门</th>
-								<th>最后登录时间</th>
-								<th>最后登录IP</th>
-								<th>是否管理员</th>
 								<th>操作</th>
 							</tr>
 							</thead>
@@ -68,14 +63,9 @@
 							<td><?=$v['username']?></td>
 							<td><?=$v['realname']?></td>
 							<td><?=$v['sex']==1?'男':'女'?></td>
-							<td><?=$v['telephone']?></td>
-							<td><?=$v['group_id']?></td>
-							<td><?=$v['last_login']?></td>
-							<td><?=$v['last_loginip']?></td>
-							<td><?=$v['is_admin']==1?'是':'否'?></td>
 							<td>
-								<a href="index.php?p=Admin&c=Member&a=edit&id=<?=$v['id']?>" class="mr-5">编辑</a>
-								<a href="index.php?p=Admin&c=member&a=delete"class="mr-5">删除</a>
+								<a href="index.php?p=Home&c=User&a=update&id=<?=$v['id']?>" class="mr-5">编辑</a>
+								<a href="index.php?p=Home&c=User&a=delete"class="mr-5">删除</a>
 							</td>
 						</tr>
 				<?php endforeach;?>
@@ -83,7 +73,7 @@
 							<?=$pagehtml?>
 				</table>
 
-				<!--开始::结束-->
+	<!--开始::结束-->
 			</div>
 		</main>
 		<footer class="btm-ft">
@@ -102,6 +92,7 @@
 			</p>
 		</footer>
 	</div>
+
 </div>
 
 </body>

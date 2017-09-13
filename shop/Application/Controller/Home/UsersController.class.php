@@ -6,15 +6,26 @@
  * Date: 2017/9/12
  * Time: 22:41
  */
-class UserController extends Controller
+class UsersController extends Controller
 {
     /**
      * 会员列表
      */
     public function index(){
+        $page = $_GET['page']??1;
+        $condition = [];
+        if(!empty($_GET['sex'])){
+            $condition[] ="sex={$_GET['sex']}";
+        }
+        if(!empty($_GET['keyword'])){
+            $condition[] ="(username like '%{$_GET['keyword']}%' or telephone like '%{$_GET['keyword']}%' or realname like '%{$_GET['keyword']}%')";//多个自动进行模糊匹配的时候需要使用()将其扩起来，作为一个整体进行判断
+        }
         $usermodel=new UserModel();
-        $result = $usermodel->index();
-        $this->assign('result',$result);
+        $result = $usermodel->index($page,$condition);
+        $pageHtml = PageTool::show($result['count'],$result['pagesize'],$result['page'],"index.php?p=Admin&c=Member&a=index");
+//        var_dump($pageHtml);exit;
+        $this->assign('pagehtml',$pageHtml);
+        $this->assign($result);
         $this->display('index');
     }
 

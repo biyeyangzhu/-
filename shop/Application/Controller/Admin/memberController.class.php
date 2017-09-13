@@ -15,7 +15,12 @@ class MemberController extends Controller
 
         $page = $_GET['page']??1;
         $condition = [];
-
+        if(!empty($_GET['sex'])){
+            $condition[] ="sex={$_GET['sex']}";
+        }
+        if(!empty($_GET['keyword'])){
+            $condition[] ="(username like '%{$_GET['keyword']}%' or telephone like '%{$_GET['keyword']}%' or realname like '%{$_GET['keyword']}%')";//多个自动进行模糊匹配的时候需要使用()将其扩起来，作为一个整体进行判断
+        }
         //查询所有的员工数据
         $memberModel=new MemberModel();
         $result =$memberModel->index($page,$condition);
@@ -26,9 +31,12 @@ class MemberController extends Controller
         foreach ($result['list'] as &$value){
             $value['group_id']=$groupname[$value['group_id']];
         }
-        //分配商品数据到页面
+        $pageHtml = PageTool::show($result['count'],$result['pagesize'],$result['page'],"index.php?p=Admin&c=Member&a=index");
+//        var_dump($pageHtml);exit;
+        $this->assign('pagehtml',$pageHtml);
+
         $this->assign($result);
-        //分配 商品分类到页面
+
         $this->assign('group',$groups);
         //3.显示页面
         $this->display('index');
@@ -63,7 +71,7 @@ class MemberController extends Controller
             }
             //制作缩略图成功，添加数据到$data中
             $data['thumb_photo'] = $thumb_logo;
-            $member = new memberModel();
+            $member = new MemberModel();
             $member->insert($data);
         }else{
 //            添加显示页面  显示员工分组
@@ -82,7 +90,7 @@ class MemberController extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             $id = $_GET['id'];
-            $memberModel = new  memberModel();
+            $memberModel = new  MemberModel();
             $row = $memberModel->edit($id);
             $groupsModel = new groupsModel();
             $groups = $groupsModel->getAll();
@@ -93,7 +101,7 @@ class MemberController extends Controller
             if ($_FILES['logo']['error'] == '4') {
                 $id = $_POST['id'];
                 $data = $_POST;
-                $membermodel = new memberModel();
+                $membermodel = new MemberModel();
                 $result = $membermodel->update($data);
                 if ($result === false) {
                     $this->redirect("index.php?p=Admin&c=member&a=edit&id={$id}", "修改失败", 3);
@@ -126,7 +134,7 @@ class MemberController extends Controller
      */
     public function delete(){
     $id=$_GET['id'];
-    $memberModel = new memberModel();
+    $memberModel = new MemberModel();
     $memberModel->delete($id);
     }
 
