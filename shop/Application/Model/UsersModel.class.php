@@ -63,7 +63,7 @@ class UsersModel extends Model
      */
     public function edit($id)
     {
-        $sql = "select * from user where id={$id}";
+        $sql = "select * from users where id={$id}";
         return $this->db->fetchRow($sql);
     }
 
@@ -104,7 +104,7 @@ class UsersModel extends Model
         }
         //合成sql语句
         $sql .= $where;
-//        var_dump($sql);die;
+//        var_dump($condition);die;
         //需要返回总页数  每页显示的条数  当前页
         //总页数
         $pagesize = 1;
@@ -119,6 +119,10 @@ class UsersModel extends Model
             $page = $totalpage;
         }
         $start = ($page - 1) * $pagesize;
+        if ($start<=0){
+            $start =0;
+//            var_dump($start);die;
+        }
         $limit = " limit {$start},{$pagesize}";
         //在拼接上页码的限制
         $sql .= $limit;
@@ -128,4 +132,10 @@ class UsersModel extends Model
         return ['list' => $lists, 'pagesize' => $pagesize, 'totalpage' => $totalpage, 'page' => $page, 'count' => $count, 'pre_page' => $pre_page, 'next_page' => $next_page];
     }
 
+    /**
+     * 充值功能
+     */
+    public function recharge(){
+
+    }
 }

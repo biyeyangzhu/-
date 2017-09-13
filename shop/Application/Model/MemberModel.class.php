@@ -56,7 +56,7 @@ class MemberModel extends Model
         }
         //合成sql语句
         $sql .= $where;
-//        var_dump($sql);die;
+//        var_dump($where);die;
         //需要返回总页数  每页显示的条数  当前页
         //总页数
         $pagesize = 2;

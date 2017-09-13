@@ -26,19 +26,22 @@
 				<!--开始::内容-->
 				<section class="page-hd">
 					<header>
-						<h2 class="title"><a href="index.php?p=Admin&c=member&a=insert">添加员工</a></h2>
+						<h2 class="title"><a href="index.php?p=Home&c=users&a=insert">添加会员</a></h2>
 					</header>
 					<hr>
 				</section>
-				<form action="index.php?p=Admin&c=Goods&a=index" method="post">
+				<form action="index.php?p=Home&c=Users&a=index" method="get">
+					<input type="hidden" name="p" value="Home">
+					<input type="hidden" name="c" value="Users">
+					<input type="hidden" name="a" value="index">
 					<!-- 推荐 -->
-					<select name="sex">
+					<select name="sex" style="width:auto;">
 						<option value="">性别</option>
-						<option value="4">男</option>
-						<option value="2">女</option>
+						<option value="2">男</option>
+						<option value="1">女</option>
 					</select>
 					<!-- 关键字 -->
-					关键字 <input type="text" name="keyword" size="15" />
+					关键字 <input type="text" name="keyword" size="30" />
 					<input type="submit" value=" 搜索 " class="button" />
 				</form>
 						<table class="table table-bordered table-striped table-hover">
@@ -52,6 +55,8 @@
 								<th>姓名</th>
 								<th>性别</th>
 								<th>电话</th>
+								<th>vip级别</th>
+								<th>余额</th>
 								<th>操作</th>
 							</tr>
 							</thead>
@@ -63,9 +68,13 @@
 							<td><?=$v['username']?></td>
 							<td><?=$v['realname']?></td>
 							<td><?=$v['sex']==1?'男':'女'?></td>
+							<td><?=$v['telephone']?></td>
+							<td><?=$v['is_vip']?></td>
+							<td><?=$v['money']?></td>
 							<td>
-								<a href="index.php?p=Home&c=User&a=update&id=<?=$v['id']?>" class="mr-5">编辑</a>
-								<a href="index.php?p=Home&c=User&a=delete"class="mr-5">删除</a>
+								<a href="index.php?p=Home&c=Users&a=update&id=<?=$v['id']?>" class="mr-5">编辑</a>
+								<a href="index.php?p=Home&c=Users&a=delete&id=<?=$v['id']?>"class="mr-5">删除</a>
+								<a href="index.php?p=Home&c=recharge&a=recharge&id=<?=$v['id']?>"class="mr-5">充值</a>
 							</td>
 						</tr>
 				<?php endforeach;?>
