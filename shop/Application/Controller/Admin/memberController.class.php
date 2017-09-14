@@ -51,6 +51,7 @@ class MemberController extends Controller
     public function insert(){
         if ($_SERVER['REQUEST_METHOD']=="POST"){
             $data =$_POST;
+            $data['password']=md5($data['password']);
             $file = $_FILES['logo'];
 
             //将上传文件保存到upload文件 成功返回路径 失败返回false

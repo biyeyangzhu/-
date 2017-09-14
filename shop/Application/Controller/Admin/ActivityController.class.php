@@ -12,7 +12,14 @@ class ActivityController extends Controller
      * 展示活动列表
      */
     public function index(){
-
+        $activitymodel = new ActivityModel();
+        $result = $activitymodel->index();
+        unset($_REQUEST['page']);
+        $url = http_build_query($_REQUEST);
+        $pageHtml = PageTool::show($result['count'],$result['pagesize'],$result['page'],"index.php?".$url);
+        $this->assign('pagehtml',$pageHtml);
+        $this->assign('result',$result);
+        $this->display('index');
     }
 
     /**
