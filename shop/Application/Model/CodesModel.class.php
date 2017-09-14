@@ -36,7 +36,7 @@ class CodesModel extends Model
      */
     public function getOne($id){
         $sql="select * from codes where id={$id}";
-       return $this->db->fetchRow($sql);
+        return $this->db->fetchRow($sql);
     }
 
     /**
