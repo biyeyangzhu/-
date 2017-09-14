@@ -1,10 +1,7 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2017/9/12
- * Time: 15:12
+ *  美发套餐功能
  */
 class PlansController extends PlatformController
 {

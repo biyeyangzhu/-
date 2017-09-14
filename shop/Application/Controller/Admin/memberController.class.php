@@ -16,7 +16,7 @@ class MemberController extends Controller
         $page = $_GET['page']??1;
         $condition = [];
         if(!empty($_GET['sex'])){
-            $condition[] ="sex={$_GET['sex']}";
+            $condition[] ="sex={$_GET['sex']}-1";
         }
         if(!empty($_GET['keyword'])){
             $condition[] ="(username like '%{$_GET['keyword']}%' or telephone like '%{$_GET['keyword']}%' or realname like '%{$_GET['keyword']}%')";//多个自动进行模糊匹配的时候需要使用()将其扩起来，作为一个整体进行判断
@@ -31,7 +31,9 @@ class MemberController extends Controller
         foreach ($result['list'] as &$value){
             $value['group_id']=$groupname[$value['group_id']];
         }
-        $pageHtml = PageTool::show($result['count'],$result['pagesize'],$result['page'],"index.php?p=Admin&c=Member&a=index");
+        unset($_REQUEST['page']);
+     $url = http_build_query($_REQUEST);
+        $pageHtml = PageTool::show($result['count'],$result['pagesize'],$result['page'],"index.php?".$url);
 //        var_dump($pageHtml);exit;
         $this->assign('pagehtml',$pageHtml);
 
