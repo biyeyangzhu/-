@@ -45,7 +45,7 @@ class LoginController extends Controller
             setcookie('id',$id,time()+7*3600*24,"/");
             setcookie('password',$password,time()+7*3600*24,"/");
         }
-//        die;
+        die;
         //跳转
         $this->redirect('index.php?p=Home&c=Users&a=index');
     }
