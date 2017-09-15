@@ -27,7 +27,9 @@ class MemberController extends Controller
         //查询所有的分类数据
         $groupsModel = new groupsModel();
         $groups = $groupsModel->getAll();
+        //获取到所有员工所在部门的数组
         $groupname=$groupsModel->getgroupname();
+        //员工部门显示文字
         foreach ($result['list'] as &$value){
             $value['group_id']=$groupname[$value['group_id']];
         }

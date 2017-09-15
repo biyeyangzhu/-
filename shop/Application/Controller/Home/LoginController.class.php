@@ -28,7 +28,7 @@ class LoginController extends Controller
             $this->redirect("index.php?p=Home&c=Login&a=login","验证码填写错误！",3);
         }
 
-        $managerModel = new UserModel();
+        $managerModel = new UsersModel();
         $result = $managerModel->check($username,$password);
         //判断张海和密码
         if($result === false){
@@ -47,7 +47,7 @@ class LoginController extends Controller
         }
 //        die;
         //跳转
-        $this->redirect('index.php?p=Home&c=User&a=index');
+        $this->redirect('index.php?p=Home&c=Users&a=index');
     }
 
     /**

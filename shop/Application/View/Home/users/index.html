@@ -69,12 +69,13 @@
 							<td><?=$v['realname']?></td>
 							<td><?=$v['sex']==1?'男':'女'?></td>
 							<td><?=$v['telephone']?></td>
-							<td><?=$v['is_vip']?></td>
+							<td><?=$v['vip_level']?></td>
 							<td><?=$v['money']?></td>
 							<td>
 								<a href="index.php?p=Home&c=Users&a=update&id=<?=$v['id']?>" class="mr-5">编辑</a>
 								<a href="index.php?p=Home&c=Users&a=delete&id=<?=$v['id']?>"class="mr-5">删除</a>
 								<a href="index.php?p=Home&c=recharge&a=recharge&id=<?=$v['id']?>"class="mr-5">充值</a>
+								<a href="index.php?p=Home&c=recharge&a=pay&id=<?=$v['id']?>"class="mr-5">消费</a>
 							</td>
 						</tr>
 				<?php endforeach;?>

@@ -37,6 +37,7 @@ class UsersController extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $data = $_POST;
+            $data['password']=md5($data['password']);
             $file = $_FILES['logo'];
             $data['is_vip']=1;
             if ($data['recharge']>=5000){

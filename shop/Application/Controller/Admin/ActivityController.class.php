@@ -12,13 +12,14 @@ class ActivityController extends Controller
      * 展示活动列表
      */
     public function index(){
+        $page = $_GET['page']??1;
         $activitymodel = new ActivityModel();
-        $result = $activitymodel->index();
+        $result = $activitymodel->index($page);
         unset($_REQUEST['page']);
         $url = http_build_query($_REQUEST);
         $pageHtml = PageTool::show($result['count'],$result['pagesize'],$result['page'],"index.php?".$url);
         $this->assign('pagehtml',$pageHtml);
-        $this->assign('result',$result);
+        $this->assign($result);
         $this->display('index');
     }
 
@@ -41,14 +42,14 @@ class ActivityController extends Controller
      */
     public function update(){
         if ($_SERVER['REQUEST_METHOD']=="POST"){
-        $data = $_POST;
+            $data = $_POST;
             $acticity = new ActivityModel();
-            $acticity->update();
+            $acticity->update($data);
         }else{
             $id = $_GET['id'];
             $acticity = new ActivityModel();
-            $result = $acticity->edit();
-            $this->assign('result',$result);
+            $result = $acticity->edit($id);
+            $this->assign('row',$result);
             $this->display('edit');
         }
     }

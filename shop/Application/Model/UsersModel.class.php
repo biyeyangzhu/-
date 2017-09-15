@@ -132,10 +132,4 @@ class UsersModel extends Model
         return ['list' => $lists, 'pagesize' => $pagesize, 'totalpage' => $totalpage, 'page' => $page, 'count' => $count, 'pre_page' => $pre_page, 'next_page' => $next_page];
     }
 
-    /**
-     * 充值功能
-     */
-    public function recharge(){
-
-    }
 }

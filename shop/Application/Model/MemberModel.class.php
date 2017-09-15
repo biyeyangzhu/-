@@ -45,7 +45,7 @@ class MemberModel extends Model
     /**
      * 列表功能
      */
-    public function index($page,$condition){
+    public function index($page=1,$condition=0){
         //加入搜索的条件  对sql语句在拼接
         $sql = "select * from member";
         //动态的where条件

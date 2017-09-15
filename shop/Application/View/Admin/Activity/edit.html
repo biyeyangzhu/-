@@ -29,6 +29,19 @@
 				<p>活动标题: <input type="text"name="title" value="$row['title']"></p>
 				<p>活动日期: <input type="data" name="start" value="$row['start']"></p>
 				<p>活动日期: <input type="data" name="end" value="$row['end']"></p>
+					<!-- 加载编辑器的容器 -->
+					<script id="container" name="content" type="text/plain">
+       <?=$row['content']?>
+    </script>
+					<!-- 配置文件 -->
+					<script type="text/javascript" src="./Public/Admin/utf8-php/ueditor.config.js"></script>
+					<!-- 编辑器源码文件 -->
+					<script type="text/javascript" src="./Public/Admin/utf8-php/ueditor.all.js"></script>
+					<!-- 实例化编辑器 -->
+					<script type="text/javascript">
+                        var ue = UE.getEditor('container');
+					</script>
+					<input type="submit" class="btn btn-primary" value="添加活动">
 			</form>
 				<!--开始::结束-->
 			</div>
