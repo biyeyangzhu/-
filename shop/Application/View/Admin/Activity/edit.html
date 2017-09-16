@@ -24,11 +24,12 @@
 		<main class="main-cont content mCustomScrollbar">
 			<div class="page-wrap">
 				<!--开始::内容-->
-				<form action="index.php?p=Admin&c=member&a=insert"method="post" enctype="multipart/form-data">
+				<form action="index.php?p=Admin&c=activity&a=update"method="post" enctype="multipart/form-data">
 					<input type="hidden" name="id" value="<?=$row['id']?>">
-				<p>活动标题: <input type="text"name="title" value="$row['title']"></p>
-				<p>活动日期: <input type="data" name="start" value="$row['start']"></p>
-				<p>活动日期: <input type="data" name="end" value="$row['end']"></p>
+				<p>活动标题: <input type="text"name="title" value="<?=$row['title']?>"></p>
+				<p>活动标题: <input type="text"name="des" value="<?=$row['des']?>"></p>
+				<p>活动日期: <input type="date" name="start_time" value="<?=$row['start']?>"></p>
+				<p>活动日期: <input type="date" name="end_time" value="<?=$row['end']?>"></p>
 					<!-- 加载编辑器的容器 -->
 					<script id="container" name="content" type="text/plain">
        <?=$row['content']?>

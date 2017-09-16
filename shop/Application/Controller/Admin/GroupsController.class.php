@@ -68,9 +68,6 @@ class GroupsController extends PlatformController
             $data = $_POST;
             $groupsModel = new groupsModel();
             $result = $groupsModel->update($data);
-            if ($result === false) {
-                $this->redirect("index.php?p=Admin&c=Groups&a=edit", "添加失败" . $groupsModel->getError(), 3);
-            }
             //添加成功跳转首页
             $this->redirect("index.php?p=Admin&c=Groups&a=index");
         } else {

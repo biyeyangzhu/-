@@ -68,4 +68,11 @@ class ActivityModel extends Model
         $sql = $this->getDeleteSqlById($id);
         $this->db->query($sql);
     }
+    /**
+     * 详情页
+     */
+    public function content($id){
+        $sql = "select content from activity where id={$id}";
+        return $this->db->fetchColumn($sql);
+    }
 }

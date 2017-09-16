@@ -3,6 +3,7 @@ header("Content-Type: text/html;charset=utf-8");
 /**
  * 定义项目路径常量  所有的路径都以 / 结尾
  */
+@session_start();
 defined("DS") or define("DS",DIRECTORY_SEPARATOR);//定义的目录的分隔符常量
 //    defined("ROOT_PATH") or define("ROOT_PATH",__DIR__.DS);
 defined("ROOT_PATH") or define("ROOT_PATH",dirname($_SERVER['SCRIPT_FILENAME']).DS);

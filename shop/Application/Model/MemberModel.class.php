@@ -82,6 +82,7 @@ class MemberModel extends Model
 
     //验证方法
     public  function check($username,$password){
+        $password = $this->db->escape_param($password);
             //双重加密
             $password = md5($password);
             //准备sql

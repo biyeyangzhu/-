@@ -26,24 +26,10 @@
 				<!--开始::内容-->
 				<section class="page-hd">
 					<header>
-						<h2 class="title"><a href="index.php?p=Home&c=users&a=insert">添加会员</a></h2>
+						<h2 class="title">会员信息</h2>
 					</header>
 					<hr>
 				</section>
-				<form action="index.php?p=Home&c=Users&a=index" method="get">
-					<input type="hidden" name="p" value="Home">
-					<input type="hidden" name="c" value="Users">
-					<input type="hidden" name="a" value="index">
-					<!-- 推荐 -->
-					<select name="sex" style="width:auto;">
-						<option value="">性别</option>
-						<option value="2">男</option>
-						<option value="1">女</option>
-					</select>
-					<!-- 关键字 -->
-					关键字 <input type="text" name="keyword" size="30" />
-					<input type="submit" value=" 搜索 " class="button" />
-				</form>
 						<table class="table table-bordered table-striped table-hover">
 
 
@@ -57,11 +43,11 @@
 								<th>电话</th>
 								<th>vip级别</th>
 								<th>余额</th>
+								<th>积分</th>
 								<th>操作</th>
 							</tr>
 							</thead>
 							<tbody>
-				<?php foreach($list as $v):?>
 						<tr class="cen">
 							<td><?=$v['id']?></td>
 							<td><img src="./Uploads/<?=$v['thumb_photo']?>" alt=""></td>
@@ -71,16 +57,12 @@
 							<td><?=$v['telephone']?></td>
 							<td><?=$v['vip_level']?></td>
 							<td><?=$v['money']?></td>
+							<td><?=$v['mall']?></td>
 							<td>
-								<a href="index.php?p=Home&c=Users&a=update&id=<?=$v['id']?>" class="mr-5">编辑</a>
-								<a href="index.php?p=Home&c=Users&a=delete&id=<?=$v['id']?>"class="mr-5">删除</a>
-								<a href="index.php?p=Home&c=recharge&a=recharge&id=<?=$v['id']?>"class="mr-5">充值</a>
-								<a href="index.php?p=Home&c=recharge&a=pay&id=<?=$v['id']?>"class="mr-5">消费</a>
+								<a href="index.php?p=Home&c=Users&a=update&id=<?=$v['id']?>" class="mr-5">修改个人资料</a>
 							</td>
 						</tr>
-				<?php endforeach;?>
 					</tbody>
-							<?=$pagehtml?>
 				</table>
 
 	<!--开始::结束-->

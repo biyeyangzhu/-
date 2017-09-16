@@ -28,7 +28,7 @@
                 <!--开始::内容-->
                 <section class="page-hd">
                     <header>
-                        <h2 class="title"><a href="index.php?p=Admin&c=Codes&a=add">添加活动</a></h2>
+                        <h2 class="title"><a href="index.php?p=Admin&c=activity&a=insert">添加活动</a></h2>
                     </header>
                     <hr>
                 </section>
@@ -40,6 +40,7 @@
                     <tr>
                         <th>ID</th>
                         <th>活动标题</th>
+                        <th>活动概况</th>
                         <th>开始时间</th>
                         <th>结束时间</th>
                         <th>发布时间</th>
@@ -52,12 +53,13 @@
                     <tr class="cen">
                         <td><?=$v['id']?></td>
                         <td><?=$v['title']?></td>
-                        <td><?=($v['start'])?></td>
-                        <td><?=$v['end']?></td>
-                        <td><?=$v['time']?></td>
+                        <td><?=$v['des']?></td>
+                        <td><?=date("Y-m-d",$v['start_time'])?></td>
+                        <td><?=date("Y-m-d",$v['end_time'])?></td>
+                        <td><?=date("Y-m-d",$v['time'])?></td>
                         <td>
-                            <a href="index.php?p=Admin&c=Activity&a=edit&id=<?=$v['id']?>" class="mr-5">编辑</a>
-                            <a title="详情" class="mr-5">详情</a>
+                            <a href="index.php?p=Admin&c=Activity&a=update&id=<?=$v['id']?>" class="mr-5">编辑</a>
+                            <a title="详情" href="index.php?p=Admin&c=Activity&a=content&id=<?=$v['id']?>" class="mr-5">详情</a>
                             <a href="index.php?p=Admin&c=Activity&a=delete&id=<?=$v['id']?>">删除</a>
                         </td>
                     </tr>

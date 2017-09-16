@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>后台管理系统-HTML5后台管理系统</title>
+<meta name="keywords"  content="设置关键词..." />
+<meta name="description" content="设置描述..." />
+<meta name="author" content="DeathGhost" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<link rel="icon" href="./Public/Admin/images/icon/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="./Public/Admin/css/style.css" />
+<script src="./Public/Admin/javascript/jquery.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/customScrollbar.min.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/echarts.min.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/layerUi/layer.js"></script>
+<script src="./Public/Admin/editor/ueditor.config.js"></script>
+<script src="./Public/Admin/editor/ueditor.all.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/pagination.js"></script>
+<script src="./Public/Admin/javascript/public.js"></script>
+</head>
+<body>
+<?php require "./Application/view/home/nav.html"?>
+		<main class="main-cont content mCustomScrollbar">
+			<div class="page-wrap">
+				<!--开始::内容-->
+				<section class="page-hd">
+					<header>
+						<h2 class="title"><a href="index.php?p=Admin&c=member&a=insert">排行榜</a></h2>
+					</header>
+					<hr>
+				</section>
+				<table class="table table-bordered table-striped table-hover">
+					<td><h2>员工排行榜</h2></td>
+					<tr>
+						<td>员工名</td>
+						<td>服务次数</td>
+					</tr>
+					<?php foreach($result as $v):?>
+					<tr>
+						<td><?=$v['username']?></td>
+						<td><?=$v['fuwu']?></td>
+					</tr>
+					<?php endforeach?>
+				</table>
+				<table class="table table-bordered table-striped table-hover">
+					<td><h2>会员充值排行榜</h2></td>
+					<tr>
+						<td>会员名</td>
+						<td>充值金额</td>
+					</tr>
+					<?php for($i=1;$i<=3;$i++):?>
+					<tr>
+						<td><?=$money["R{$i}"]?></td>
+						<td><?=$money["{$i}"-1]?></td>
+					</tr>
+					<?php endfor?>
+				</table>
+				<table class="table table-bordered table-striped table-hover">
+					<td><h2>会员消费排行榜</h2></td>
+					<tr>
+						<td>会员名</td>
+						<td>消费金额</td>
+					</tr>
+					<?php for($i=1;$i<=3;$i++):?>
+					<tr>
+						<td><?=$charge["R{$i}"]?></td>
+						<td><?=$charge["{$i}"-1]?></td>
+					</tr>
+					<?php endfor?>
+				</table>
+
+
+			</div>
+		</main>
+		<footer class="btm-ft">
+			<p class="clear">
+				<span class="fl">©Copyright 2016 <a href="#" title="DeathGhost" target="_blank">DeathGhost.cn</a></span>
+				<span class="fr text-info">
+					<em class="uppercase">
+						<i class="icon-user"></i>
+						author:deathghost
+					</em> | 
+					<em class="uppercase"><i class="icon-envelope-alt"></i>
+						更多模板： <a href="http://www.mycodes.net/" target="_blank">源码之家</a>
+					</em>
+					<a onclick="reciprocate()" class="text-primary"><i class="icon-qrcode"></i>捐赠</a>
+				</span>
+			</p>
+		</footer>
+	</div>
+</div>
+
+</body>
+</html>

@@ -39,7 +39,6 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>电话</th>
                         <th>预约美发师</th>
                         <th>备注</th>
                         <th>预约日期</th>
@@ -53,7 +52,6 @@
                     <?php foreach($result as $v):?>
                     <tr class="cen">
                         <td><?=$v['id']?></td>
-                        <td><?=$v['phone']?></td>
                         <td><?=$v['realname']?></td>
                         <td><?=$v['content']?></td>
                         <td><?=$v['date']?></td>
@@ -71,7 +69,6 @@
                         <td><?=$v['reply']?></td>
                         <td>
                             <a href="index.php?p=Home&c=Order&a=edit&id=<?=$v['id']?>" class="mr-5">编辑</a>
-                            <a title="详情" class="mr-5">详情</a>
                             <a href="index.php?p=Home&c=Order&a=delete&id=<?=$v['id']?>">删除</a>
                         </td>
                     </tr>

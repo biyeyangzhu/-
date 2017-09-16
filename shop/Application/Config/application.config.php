@@ -13,7 +13,7 @@ return [
     //默认访问的平台控制器方法
     'app'=>[
         'default_platform'=>'Home',
-        'default_controller'=>'Login',
-        'default_action'=>'Login'
+        'default_controller'=>'Index',
+        'default_action'=>'index'
     ]
 ];

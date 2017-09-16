@@ -37,6 +37,7 @@ class CodesController extends PlatformController
     public function add(){
         if($_SERVER['REQUEST_METHOD'] == "POST"){
             $data=$_POST;
+            $data['code']=time();
             $codesModel = new CodesModel();
             $result = $codesModel->insert($data);
             if ($result === false) {

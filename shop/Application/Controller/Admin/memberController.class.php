@@ -6,7 +6,7 @@
  * Date: 2017/9/12
  * Time: 11:12
  */
-class MemberController extends Controller
+class MemberController extends PlatformController
 {
     /**
      * 员工列表

@@ -53,11 +53,10 @@
                         <td><?=$v['id']?></td>
                         <td><?=$v['name']?></td>
                         <td><?=$v['money']?></td>
-                        <td><?=$v['status']?></td>
+                        <td><?=$v['status']==1?"上线":'下线'?></td>
                         <td><?=$v['des']?></td>
                         <td>
                             <a href="index.php?p=Admin&c=Plans&a=edit&id=<?=$v['id']?>" class="mr-5">编辑</a>
-                            <a title="详情" class="mr-5">详情</a>
                             <a href="index.php?p=Admin&c=Plans&a=delete&id=<?=$v['id']?>">删除</a>
                         </td>
                     </tr>

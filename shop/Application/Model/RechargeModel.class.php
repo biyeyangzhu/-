@@ -43,7 +43,7 @@ class RechargeModel extends Model
         $sql_level = "select vip_level from users where id={$data['id']}";
         $level = $this->db->fetchColumn($sql_level);
         //判断代金券余额和消费金额对比
-        if (isset($data['codes'])){
+        if (($data['codes'])!=0){
             if ($data['plan']>$data['codes']){
                 $data['money']=$data['plan']-$data['codes'];
                 $sql_codes = "update codes set status=1 ";
@@ -54,9 +54,10 @@ class RechargeModel extends Model
                 $data['money']=0;
             }
         }else{
+//            var_dump($level);die;
             //使用vip打折
             //查询出用户的折扣
-            $sql_discount ="select discount from vip where vip_level={$level}";
+            $sql_discount ="select discount from vip where level={$level}";
             $discount = $this->db->fetchColumn($sql_discount);
             $data['money']=$data['plan']*$discount;
         }
@@ -65,7 +66,7 @@ class RechargeModel extends Model
         $user_money = $this->db->fetchColumn($sql_user);
         if ($data['money']>$user_money){
             $this->error = "用户余额不足";
-            return false;
+            return false;die;
         }
         //计算消费积分
         $sql_mall = "select mall from mall where `level`={$level}";
@@ -100,5 +101,21 @@ class RechargeModel extends Model
         $rows = $this->db->fetchRow($sql);
         $row = $this->db->fetchAll($sql_code);
         return ['code'=>$row,'username'=>$rows];
+    }
+    /**
+     * 查询出所有的消费金额
+     */
+    public function getpay($id){
+        $sql  ="select * from history where user_id ={$id} and type=0";
+        $result  =$this->db->fetchAll($sql);
+        return $result;
+    }
+    /**
+     * 查询出所有的充值金额
+     */
+    public function getcharge($id){
+        $sql  ="select * from history where user_id ={$id} and type=1";
+        $result  =$this->db->fetchAll($sql);
+        return $result;
     }
 }

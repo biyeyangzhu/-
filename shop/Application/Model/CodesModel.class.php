@@ -61,4 +61,13 @@ class CodesModel extends Model
         $sql="select * from users";
         return $this->db->fetchAll($sql);
     }
+
+    /**
+     * 查询会员的优惠券
+     * @param $userid
+     */
+    public function getuser($userid){
+        $sql="select * from codes where user_id={$userid}";
+        return $this->db->fetchAll($sql);
+    }
 }

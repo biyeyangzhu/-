@@ -51,7 +51,7 @@
                         <td><?=$v['phone']?></td>
                         <td><?=$v['realname']?></td>
                         <td><?=$v['content']?></td>
-                        <td><?=$v['date']?></td>
+                        <td><?=date("Y-m-d",$v['date'])?></td>
                         <td >
                             <?php
                             if(($v['status']&4)>0){

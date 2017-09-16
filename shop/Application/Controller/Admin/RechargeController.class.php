@@ -27,8 +27,11 @@ class RechargeController extends PlatformController
             $recharge = new RechargeruleModel();
             $rows = $recharge->getall();
             $usermodel = new RechargeModel();
-            $usermodel->recharge($data,$rows);
-            $this->redirect("index.php?p=Home&c=Users&a=index",'充值成功',3);
+           $result =  $usermodel->recharge($data,$rows);
+           if ($result===false){
+               $this->redirect("index.php?p=admin&c=recharge&a=recharge",$usermodel->getError(),3);
+           }
+            $this->redirect("index.php?p=admin&c=Users&a=index",'充值成功',3);
         }
     }
     /**
@@ -38,8 +41,11 @@ class RechargeController extends PlatformController
         if ($_SERVER['REQUEST_METHOD']=="POST"){
             $data = $_POST;
             $paymodel = new RechargeModel();
-            $paymodel->pay($data);
-            $this->redirect('index.php?p=Home&c=Users&a=index','消费成功',3);
+            $result = $paymodel->pay($data);
+            if ($result===false){
+                $this->redirect("index.php?p=Admin&c=recharge&a=pay&id={$data['id']}",$paymodel->getError(),3);
+            }
+            $this->redirect('index.php?p=Admin&c=Users&a=index','消费成功',3);
         }else{
             $id=$_GET['id'];//获取到用户的id
             $paymodel = new RechargeModel();

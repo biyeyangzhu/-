@@ -11,6 +11,7 @@ class UsersModel extends Model
     //验证账号和密码
     public function check($username, $password)
     {
+        $password = $this->db->escape_param($password);
         //准备sql
         $password = md5($password);
         $sql = "select * from users where username='{$username}' and password='{$password}'";
@@ -75,6 +76,12 @@ class UsersModel extends Model
         if (empty($data['photo'])) {
             $row = $this->edit($data['id']);
             $data['photo'] = $row['photo'];
+        }
+        $user = $this->edit($data['id']);
+        if ($data['password']=$user['password']){
+            $data['password']=$user['password'];
+        }else{
+            $data['password']=md5($data['password']);
         }
         $sql = $this->getUpdateSql($data);
        $this->db->query($sql);

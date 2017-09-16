@@ -9,27 +9,17 @@
 class UsersController extends Controller
 {
     /**
-     * 会员列表
+     * 会员个人信息
      */
     public function index(){
-        $page = $_GET['page']??1;
-        $condition = [];
-        if(!empty($_GET['sex'])){
-            $condition[] ="sex={$_GET['sex']}-1";
-        }
-        if(!empty($_GET['keyword'])){
-            $condition[] ="(username like '%{$_GET['keyword']}%' or telephone like '%{$_GET['keyword']}%' or realname like '%{$_GET['keyword']}%')";//多个自动进行模糊匹配的时候需要使用()将其扩起来，作为一个整体进行判断
-        }
+        @session_start();
+        //接收到session中的会员id
+        $id = $_SESSION['USER_INFO']['id'];
         $usermodel=new UsersModel();
-        $result = $usermodel->index($page,$condition);
-        unset($_REQUEST['page']);
-        $url = http_build_query($_REQUEST);
-        $pageHtml = PageTool::show($result['count'],$result['pagesize'],$result['page'],"index.php?".$url);
-        $this->assign('pagehtml',$pageHtml);
-        $this->assign($result);
+        $result = $usermodel->edit($id);
+        $this->assign('v',$result);
         $this->display('index');
     }
-
     /**
      * 会员的添加 头像上传
      */
@@ -77,16 +67,6 @@ class UsersController extends Controller
             $this->display('add');
         }
     }
-    /**
-     * 会员的删除
-     */
-    public function delete(){
-        $id = $_GET['id'];
-        $usermodel = new UsersModel();
-        $usermodel->delete($id);
-        $this->redirect('index.php?p=Home&c=users&a=index',"删除成功",3);
-    }
-
     /**
      * 会员的修改
      */

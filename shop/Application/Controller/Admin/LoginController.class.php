@@ -58,7 +58,7 @@ class LoginController extends Controller
 //        die;
 //        echo 111;die;
         //登陆成功显示首页
-        $this->redirect('index.php?p=Admin&c=Index&a=index');
+        $this->redirect('index.php?p=Admin&c=rank&a=index');
     }
         /**
          * 退出功能

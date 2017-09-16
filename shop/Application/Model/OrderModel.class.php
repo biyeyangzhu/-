@@ -84,4 +84,16 @@ class OrderModel extends Model
         $sql = "update orders set status='{$status}',reply='{$data['reply']}' where id='{$data['id']}'";
         $this->db->query($sql);
     }
+    /**
+     * 根据用户id查询一条数据
+     * @param $id
+     * @return array|mixed|null
+     */
+    public function getuser($userid)
+    {
+        //准备sql
+        $sql = "select * from orders where user_id={$userid}";
+        //执行sql
+        return $this->db->fetchAll($sql);
+    }
 }

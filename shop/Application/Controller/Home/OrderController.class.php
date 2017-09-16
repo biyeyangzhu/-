@@ -9,28 +9,16 @@
 class OrderController extends  Controller
 {
     /**
-     * 显示功能
+     * 显示功能 当前会员的预约
      */
         public function index(){
+            @session_start();
+            $userid=$_SESSION['USER_INFO']['id'];
             $orderModel = new OrderModel();
-            $result = $orderModel->getAll();
+            $result = $orderModel->getuser($userid);
             $this->assign('result', $result);
             $this->display('index');
         }
-
-    /**
-     * 删除
-     */
-    public function delete()
-    {
-        //根据ID删除数据
-        $id = $_GET['id'];
-//        var_dump($id);die;
-        $orderModel = new OrderModel();
-        $orderModel->delete($id);
-        //删除成功 跳转
-        $this->redirect('index.php?p=Home&c=Order&a=index');
-    }
 
 
     /**

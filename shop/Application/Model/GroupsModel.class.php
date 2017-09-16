@@ -79,9 +79,7 @@ class groupsModel extends Model
     public function update($data)
     {
         //准备sql
-        $sql = "update plans set name='{$data['name']}' where id='{$data['id']}'";
-        //执行sql
-//            var_dump($sql);die;
+        $sql = "update groups set name='{$data['name']}' where id='{$data['id']}'";
         $this->db->query($sql);
     }
 }

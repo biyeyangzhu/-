@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>后台管理系统-HTML5后台管理系统</title>
+<meta name="keywords"  content="设置关键词..." />
+<meta name="description" content="设置描述..." />
+<meta name="author" content="DeathGhost" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<link rel="icon" href="./Public/Admin/images/icon/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="./Public/Admin/css/style.css" />
+<script src="./Public/Admin/javascript/jquery.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/customScrollbar.min.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/echarts.min.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/layerUi/layer.js"></script>
+<script src="./Public/Admin/editor/ueditor.config.js"></script>
+<script src="./Public/Admin/editor/ueditor.all.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/pagination.js"></script>
+<script src="./Public/Admin/javascript/public.js"></script>
+</head>
+<body>
+<?php require "./Application/view/Admin/nav.html"?>
+		<main class="main-cont content mCustomScrollbar">
+			<div class="page-wrap">
+				<!--开始::内容-->
+				<section class="page-hd">
+					<header>
+						<h2 class="title"><a href="index.php?p=Home&c=users&a=insert">添加会员</a></h2>
+					</header>
+					<hr>
+				</section>
+				<form action="index.php?p=Home&c=Users&a=index" method="get">
+					<input type="hidden" name="p" value="Home">
+					<input type="hidden" name="c" value="Users">
+					<input type="hidden" name="a" value="index">
+					<!-- 推荐 -->
+					<select name="sex" style="width:auto;">
+						<option value="">性别</option>
+						<option value="2">男</option>
+						<option value="1">女</option>
+					</select>
+					<!-- 关键字 -->
+					关键字 <input type="text" name="keyword" size="30" />
+					<input type="submit" value=" 搜索 " class="button" />
+				</form>
+						<table class="table table-bordered table-striped table-hover">
+
+
+							<thead>
+							<tr>
+								<th>ID</th>
+								<th>头像</th>
+								<th>用户名</th>
+								<th>姓名</th>
+								<th>性别</th>
+								<th>电话</th>
+								<th>vip级别</th>
+								<th>余额</th>
+								<th>操作</th>
+							</tr>
+							</thead>
+							<tbody>
+				<?php foreach($list as $v):?>
+						<tr class="cen">
+							<td><?=$v['id']?></td>
+							<td><img src="./Uploads/<?=$v['thumb_photo']?>" alt=""></td>
+							<td><?=$v['username']?></td>
+							<td><?=$v['realname']?></td>
+							<td><?=$v['sex']==1?'男':'女'?></td>
+							<td><?=$v['telephone']?></td>
+							<td><?=$v['vip_level']?></td>
+							<td><?=$v['money']?></td>
+							<td>
+								<a href="index.php?p=Home&c=Users&a=update&id=<?=$v['id']?>" class="mr-5">编辑</a>
+								<a href="index.php?p=Home&c=Users&a=delete&id=<?=$v['id']?>"class="mr-5">删除</a>
+								<a href="index.php?p=Admin&c=recharge&a=recharge&id=<?=$v['id']?>"class="mr-5">充值</a>
+								<a href="index.php?p=Admin&c=recharge&a=pay&id=<?=$v['id']?>"class="mr-5">消费</a>
+							</td>
+						</tr>
+				<?php endforeach;?>
+					</tbody>
+							<?=$pagehtml?>
+				</table>
+
+	<!--开始::结束-->
+			</div>
+		</main>
+		<footer class="btm-ft">
+			<p class="clear">
+				<span class="fl">©Copyright 2016 <a href="#" title="DeathGhost" target="_blank">DeathGhost.cn</a></span>
+				<span class="fr text-info">
+					<em class="uppercase">
+						<i class="icon-user"></i>
+						author:deathghost
+					</em> | 
+					<em class="uppercase"><i class="icon-envelope-alt"></i>
+						更多模板： <a href="http://www.mycodes.net/" target="_blank">源码之家</a>
+					</em>
+					<a onclick="reciprocate()" class="text-primary"><i class="icon-qrcode"></i>捐赠</a>
+				</span>
+			</p>
+		</footer>
+	</div>
+
+</div>
+
+</body>
+</html>

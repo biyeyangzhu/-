@@ -6,7 +6,7 @@
  * Date: 2017/9/13
  * Time: 10:19
  */
-class OrderController extends  Controller
+class OrderController extends  PlatformController
 {
     /**
      * 显示功能

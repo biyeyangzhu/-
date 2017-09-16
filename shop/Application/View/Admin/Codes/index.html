@@ -56,16 +56,15 @@
                         <td><?=$v['money']?></td>
                         <td>
                             <?php
-                            if(($v['status']&4)>0){
+                            if($v['status']==0){
                             echo "未使用";
-                            }elseif(($v['status']&2)>0){
+                            }elseif($v['status']==1){
                             echo "已使用";
                             }
 ?>
                         </td>
                         <td>
                             <a href="index.php?p=Admin&c=Codes&a=edit&id=<?=$v['id']?>" class="mr-5">编辑</a>
-                            <a title="详情" class="mr-5">详情</a>
                             <a href="index.php?p=Admin&c=Codes&a=delete&id=<?=$v['id']?>">删除</a>
                         </td>
                     </tr>

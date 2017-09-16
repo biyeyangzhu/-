@@ -14,22 +14,32 @@
 					<i class="i-l-2"></i>
 					<i class="i-l-3"></i>
 				</span>
-                <strong>VS后台管理系统</strong>
+                <strong>VS会员系统</strong>
             </div>
         </div>
 
         <nav class="side-menu content mCustomScrollbar" data-mcs-theme="minimal-dark">
             <h2>
-                <a href="index.php?p=Admin&c=Rank&a=index" class="InitialPage"><i class="icon-dashboard"></i>数据概况</a>
+                <a href="index.php?p=Home&c=Rank&a=index" class="InitialPage"><i class="icon-dashboard"></i>服务之星</a>
             </h2>
             <ul>
+                <li>
+                    <dl>
+                        <dt>
+                            <i class="icon-table"></i>个人资料<i class="icon-angle-right"></i>
+                        </dt>
+                        <dd>
+                            <a href="index.php?p=home&c=users&a=index">会员资料</a>
+                        </dd>
+                    </dl>
+                </li>
                 <li>
                     <dl>
                         <dt>
                             <i class="icon-columns"></i>预约<i class="icon-angle-right"></i>
                         </dt>
                         <dd>
-                            <a href="index.php?p=Admin&c=order&a=index">预约列表</a>
+                            <a href="index.php?p=Home&c=order&a=index">预约列表</a>
                         </dd>
                     </dl>
                 </li>
@@ -39,41 +49,50 @@
                             <i class="icon-list-alt"></i>代金券<i class="icon-angle-right"></i>
                         </dt>
                         <dd>
-                            <a href="index.php?p=Admin&c=codes&a=index">代金券列表</a>
+                            <a href="index.php?p=home&c=codes&a=index">代金券列表</a>
                         </dd>
                     </dl>
                 </li>
                 <li>
                     <dl>
                         <dt>
-                            <i class="icon-inbox"></i>部门管理<i class="icon-angle-right"></i>
+                            <i class="icon-table"></i>套餐列表<i class="icon-angle-right"></i>
                         </dt>
                         <dd>
-                            <a href="index.php??p=Admin&c=Groups&a=index">部门列表</a>
+                            <a href="index.php?p=home&c=plans&a=index">套餐列表</a>
                         </dd>
                     </dl>
                 </li>
                 <li>
                     <dl>
                         <dt>
-                            <i class="icon-table"></i>套餐管理<i class="icon-angle-right"></i>
+                            <i class="icon-table"></i>充值活动<i class="icon-angle-right"></i>
                         </dt>
                         <dd>
-                            <a href="index.php?p=Admin&c=plans&a=index">套餐列表</a>
+                            <a href="index.php?p=home&c=history&a=index">活动列表</a>
                         </dd>
                     </dl>
                 </li>
                 <li>
                     <dl>
                         <dt>
-                            <i class="icon-list-alt"></i>员工管理<i class="icon-angle-right"></i>
+                            <i class="icon-table"></i>充值记录<i class="icon-angle-right"></i>
                         </dt>
                         <dd>
-                            <a href="index.php?p=Admin&c=member&a=index">员工列表</a>
+                            <a href="index.php?p=home&c=history&a=charge">记录列表</a>
                         </dd>
                     </dl>
                 </li>
-
+                <li>
+                    <dl>
+                        <dt>
+                            <i class="icon-table"></i>消费记录<i class="icon-angle-right"></i>
+                        </dt>
+                        <dd>
+                            <a href="index.php?p=home&c=history&a=pay">记录列表</a>
+                        </dd>
+                    </dl>
+                </li>
             </ul>
         </nav>
         <footer class="side-footer">© DeathGhost 版权所有</footer>
@@ -86,19 +105,13 @@
             <div class="hd-rt">
                 <ul>
                     <li>
-                        <a href="index.php?p=Home&c=Order&a=index" >访问前台</a>
+                        <a href="index.php?p=Home&c=index&a=index" >访问前台</a>
                     </li>
                     <li>
-                        <a><i class="icon-random"></i>清除缓存</a>
+                        <a><i class="icon-user"></i>欢迎会员:<em><?=$_SESSION['USER_INFO']['username']?></em></a>
                     </li>
                     <li>
-                        <a><i class="icon-user"></i>管理员:<em>DeathGhost</em></a>
-                    </li>
-                    <li>
-                        <a><i class="icon-bell-alt"></i>系统消息</a>
-                    </li>
-                    <li>
-                        <a href="index.php?p=Admin&c=Login&a=logout" id="JsSignOut"><i class="icon-signout"></i>安全退出</a>
+                        <a href="index.php?p=home&c=Login&a=logout" id="JsSignOut"><i class="icon-signout"></i>安全退出</a>
                     </li>
                 </ul>
             </div>

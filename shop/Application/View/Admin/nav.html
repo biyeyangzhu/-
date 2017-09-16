@@ -46,6 +46,16 @@
                 <li>
                     <dl>
                         <dt>
+                            <i class="icon-list-alt"></i>活动管理<i class="icon-angle-right"></i>
+                        </dt>
+                        <dd>
+                            <a href="index.php?p=Admin&c=activity&a=index">活动列表</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
                             <i class="icon-inbox"></i>部门管理<i class="icon-angle-right"></i>
                         </dt>
                         <dd>
@@ -73,6 +83,36 @@
                         </dd>
                     </dl>
                 </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <i class="icon-list-alt"></i>会员管理<i class="icon-angle-right"></i>
+                        </dt>
+                        <dd>
+                            <a href="index.php?p=Admin&c=users&a=index">会员列表</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <i class="icon-list-alt"></i>vip规则<i class="icon-angle-right"></i>
+                        </dt>
+                        <dd>
+                            <a href="index.php?p=Admin&c=vip&a=index">规则列表</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <i class="icon-list-alt"></i>充值规则<i class="icon-angle-right"></i>
+                        </dt>
+                        <dd>
+                            <a href="index.php?p=Admin&c=rule&a=index">规则列表</a>
+                        </dd>
+                    </dl>
+                </li>
 
             </ul>
         </nav>
@@ -86,16 +126,10 @@
             <div class="hd-rt">
                 <ul>
                     <li>
-                        <a href="index.php?p=Home&c=Order&a=index" >访问前台</a>
+                        <a href="index.php?p=Home&c=index&a=index" >访问前台</a>
                     </li>
                     <li>
-                        <a><i class="icon-random"></i>清除缓存</a>
-                    </li>
-                    <li>
-                        <a><i class="icon-user"></i>管理员:<em>DeathGhost</em></a>
-                    </li>
-                    <li>
-                        <a><i class="icon-bell-alt"></i>系统消息</a>
+                        <a><i class="icon-user"></i>管理员:<em><?=$_SESSION['ADMIN_INFO']['username']?></em></a>
                     </li>
                     <li>
                         <a href="index.php?p=Admin&c=Login&a=logout" id="JsSignOut"><i class="icon-signout"></i>安全退出</a>
